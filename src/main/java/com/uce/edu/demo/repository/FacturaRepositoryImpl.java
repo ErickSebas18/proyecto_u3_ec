@@ -72,13 +72,19 @@ public class FacturaRepositoryImpl implements IFacturaRepository {
 	@Override
 	public List<Factura> buscarFacturaWhereJoin(Integer cantidad) {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Factura> query = this.entityManager.createQuery(
+				"Select f from Factura f join f.detalleFacturas fa where f = fa.factura and fa.cantidad > :cantidad", Factura.class);
+		query.setParameter("cantidad", cantidad);
+		return query.getResultList();
 	}
 
 	@Override
 	public List<Factura> buscarFacturaFetchJoin(Integer cantidad) {
 		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Factura> query = this.entityManager.createQuery(
+				"Select f from Factura f fetch join f.detalleFacturas fa where fa.cantidad > :cantidad", Factura.class);
+		query.setParameter("cantidad", cantidad);
+		return query.getResultList();
 	}
 
 	
