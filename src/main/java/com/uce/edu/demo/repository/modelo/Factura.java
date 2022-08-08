@@ -31,7 +31,7 @@ public class Factura {
 	@ManyToOne
 	@JoinColumn(name = "fact_clie_id")
 	private Cliente cliente;
-	@OneToMany(mappedBy = "factura", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "factura", fetch = FetchType.LAZY)
 	private List<DetalleFactura> detalleFacturas;
 
 	// SET Y GET
@@ -77,8 +77,7 @@ public class Factura {
 
 	@Override
 	public String toString() {
-		return "Factura [id=" + id + ", fecha=" + fecha + ", numero=" + numero + ", cliente=" + cliente
-				+ ", detalleFacturas=" + detalleFacturas + "]";
+		return "Factura [id=" + id + ", fecha=" + fecha + ", numero=" + numero + ", cliente=" + cliente + "]";
 	}
 
 }

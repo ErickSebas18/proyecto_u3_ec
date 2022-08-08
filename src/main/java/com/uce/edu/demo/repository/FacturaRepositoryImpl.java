@@ -82,7 +82,7 @@ public class FacturaRepositoryImpl implements IFacturaRepository {
 	public List<Factura> buscarFacturaFetchJoin(Integer cantidad) {
 		// TODO Auto-generated method stub
 		TypedQuery<Factura> query = this.entityManager.createQuery(
-				"Select f from Factura f fetch join f.detalleFacturas fa where fa.cantidad > :cantidad", Factura.class);
+				"Select f from Factura f join fetch f.detalleFacturas fa where fa.cantidad > :cantidad", Factura.class);
 		query.setParameter("cantidad", cantidad);
 		return query.getResultList();
 	}
