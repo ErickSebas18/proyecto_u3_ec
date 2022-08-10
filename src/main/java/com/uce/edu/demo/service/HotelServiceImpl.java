@@ -2,8 +2,10 @@ package com.uce.edu.demo.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.uce.edu.demo.repository.IHotelRepository;
 import com.uce.edu.demo.repository.modelo.Hotel;
@@ -13,6 +15,8 @@ public class HotelServiceImpl implements IHotelService{
 
 	@Autowired
 	private IHotelRepository hotelRepository;
+	
+	private static Logger logJava = Logger.getLogger(HotelServiceImpl.class);
 
 	@Override
 	public List<Hotel> buscarHotelInnerJoin(String tipoHabitacion) {
@@ -59,6 +63,7 @@ public class HotelServiceImpl implements IHotelService{
 	@Override
 	public List<Hotel> buscarHotelFetchJoin(String tipoHabitacion) {
 		// TODO Auto-generated method stub
+		logJava.error("Transacción activa Service: " + TransactionSynchronizationManager.isActualTransactionActive());
 		return this.hotelRepository.buscarHotelFetchJoin(tipoHabitacion);
 	}
 	
