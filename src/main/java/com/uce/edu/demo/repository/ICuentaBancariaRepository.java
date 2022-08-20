@@ -7,4 +7,5 @@ public interface ICuentaBancariaRepository {
 	public void actualizar(CuentaBancaria cuentaBancaria);
 	
 	public CuentaBancaria buscarPorNumero(String numero);
+	
 }

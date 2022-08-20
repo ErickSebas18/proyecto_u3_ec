@@ -26,6 +26,8 @@ public class Transferencia {
 	private LocalDateTime fecha;
 	@Column(name = "tran_monto")
 	private BigDecimal monto;
+	@Column(name = "tran_numero")
+	private String numero;
 	@ManyToOne
 	@JoinColumn(name = "tran_cuenta_origen")
 	private CuentaBancaria cuentaOrigen;
@@ -72,6 +74,14 @@ public class Transferencia {
 
 	public void setCuentaDestino(CuentaBancaria cuentaDestino) {
 		this.cuentaDestino = cuentaDestino;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 }

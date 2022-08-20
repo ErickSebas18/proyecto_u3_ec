@@ -31,7 +31,7 @@ public class ProyectoU3EcApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		this.iTransferenciaService.realizarTransferencia("451234", "613456", new BigDecimal(10));
+		this.iTransferenciaService.realizarTransferencia("451234", "613456", new BigDecimal(1));
 		
 	}
 
