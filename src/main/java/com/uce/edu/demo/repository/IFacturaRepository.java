@@ -21,4 +21,10 @@ public interface IFacturaRepository {
 	public List<Factura> buscarFacturaWhereJoin(Integer cantidad);
 	
 	public List<Factura> buscarFacturaFetchJoin(Integer cantidad);
+	
+	public Factura consultar(String numeroFactura);
+	
+	public void insertar(Factura factura);
+	
+	public void actualizar(Factura factura);
 }

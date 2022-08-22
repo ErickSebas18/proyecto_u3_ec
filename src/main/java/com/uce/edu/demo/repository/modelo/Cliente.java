@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -22,42 +20,60 @@ public class Cliente {
 	@SequenceGenerator(name = "clie_seq_id", sequenceName = "clie_seq_id", allocationSize = 1)
 	@Column(name = "clie_id")
 	private Integer id;
+
+	@Column(name = "clie_cedula")
+	private String cedula;
+
 	@Column(name = "clie_numero_tarjeta")
 	private String numeroTarjeta;
-	@OneToOne
-	@JoinColumn(name = "clie_ciud_id")
-	private Ciudadano2 ciudadano;
+//	@OneToOne
+//	@JoinColumn(name = "clie_ciud_id")
+//	private Ciudadano2 ciudadano;
 	@OneToMany(mappedBy = "cliente")
 	private List<Factura> facturas;
-	
-	//SET Y GET
+
+	// SET Y GET
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getNumeroTarjeta() {
 		return numeroTarjeta;
 	}
+
 	public void setNumeroTarjeta(String numeroTarjeta) {
 		this.numeroTarjeta = numeroTarjeta;
 	}
-	public Ciudadano2 getCiudadano() {
-		return ciudadano;
-	}
-	public void setCiudadano(Ciudadano2 ciudadano) {
-		this.ciudadano = ciudadano;
-	}
+
+//	public Ciudadano2 getCiudadano() {
+//		return ciudadano;
+//	}
+//	public void setCiudadano(Ciudadano2 ciudadano) {
+//		this.ciudadano = ciudadano;
+//	}
 	public List<Factura> getFacturas() {
 		return facturas;
 	}
+
 	public void setFacturas(List<Factura> facturas) {
 		this.facturas = facturas;
 	}
+
+	public String getCedula() {
+		return cedula;
+	}
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", numeroTarjeta=" + numeroTarjeta + ", ciudadano=" + ciudadano + "]";
+		return "Cliente [id=" + id + ", numeroTarjeta=" + numeroTarjeta /* + ", ciudadano=" + ciudadano */ + "]";
 	}
-	
+
 }

@@ -87,5 +87,26 @@ public class FacturaRepositoryImpl implements IFacturaRepository {
 		return query.getResultList();
 	}
 
+	@Override
+	public Factura consultar(String numeroFactura) {
+		// TODO Auto-generated method stub
+		TypedQuery<Factura> query = this.entityManager.createQuery(
+				"Select f from Factura f where f.numero = :numeroFactura", Factura.class);
+		query.setParameter("numeroFactura", numeroFactura);
+		return query.getSingleResult();
+	}
+
+	@Override
+	public void insertar(Factura factura) {
+		// TODO Auto-generated method stub
+		this.entityManager.persist(factura);
+	}
+
+	@Override
+	public void actualizar(Factura factura) {
+		// TODO Auto-generated method stub
+		this.entityManager.merge(factura);
+	}
+
 	
 }

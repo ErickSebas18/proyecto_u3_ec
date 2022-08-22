@@ -25,34 +25,62 @@ public class Producto {
 	private String nombre;
 	@Column(name = "prod_precio")
 	private BigDecimal precio;
+	@Column(name = "prod_numero")
+	private String numero;
+	@Column (name="prod_stock")
+	private Integer stock;
 	@OneToMany(mappedBy = "producto")
 	private List<DetalleFactura> detalleFacturas;
-	
-	//SET Y GET
+
+	// SET Y GET
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public BigDecimal getPrecio() {
 		return precio;
 	}
+
 	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
+
 	public List<DetalleFactura> getDetalleFacturas() {
 		return detalleFacturas;
 	}
+
 	public void setDetalleFacturas(List<DetalleFactura> detalleFacturas) {
 		this.detalleFacturas = detalleFacturas;
 	}
+
 	
 	
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public Integer getStock() {
+		return stock;
+	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
+
 }

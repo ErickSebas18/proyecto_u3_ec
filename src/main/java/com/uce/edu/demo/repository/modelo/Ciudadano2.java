@@ -22,8 +22,8 @@ public class Ciudadano2 {
 	private String nombre;
 	@Column(name = "ciud_apellido")
 	private String apellido;
-	@OneToOne(mappedBy = "ciudadano")
-	private Cliente cliente;
+//	@OneToOne(mappedBy = "ciudadano")
+//	private Cliente cliente;
 
 	// SET Y GET
 	public Integer getId() {
@@ -50,12 +50,12 @@ public class Ciudadano2 {
 		this.apellido = apellido;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+//	public Cliente getCliente() {
+//		return cliente;
+//	}
+//
+//	public void setCliente(Cliente cliente) {
+//		this.cliente = cliente;
+//	}
 
 }
