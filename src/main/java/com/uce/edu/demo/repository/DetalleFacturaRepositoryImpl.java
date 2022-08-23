@@ -17,7 +17,7 @@ public class DetalleFacturaRepositoryImpl implements IDetalleFacturaRepository{
 	private EntityManager entityManager;
 	
 	@Override
-	@Transactional(value = TxType.MANDATORY)
+	@Transactional(value = TxType.REQUIRES_NEW)
 	public void insertar(DetalleFactura detalle) {
 		// TODO Auto-generated method stub
 		this.entityManager.persist(detalle);
