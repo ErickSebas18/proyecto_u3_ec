@@ -1,8 +1,5 @@
 package com.uce.edu.demo.service.funcional;
 
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
 import org.apache.log4j.Logger;
 
 public class MainInterfacesFuncionales {
@@ -12,6 +9,8 @@ public class MainInterfacesFuncionales {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		ConsumoMetodosHighOrder metodosHighOrder = new ConsumoMetodosHighOrder();
+		
 		// SUPPLIER
 		
 		// Clases
@@ -29,6 +28,11 @@ public class MainInterfacesFuncionales {
 		IPersonaSupplier<String> supplierLambdaTE = () -> "Daniel";
 		logJava.info("Supplier Lambda Class: " + supplierLambdaTE.getNombre());
 		
+		//MétodosHighOrder
+		String valorHO = metodosHighOrder.consumirSupplier(() -> "HOLA MUNDO");
+		logJava.info("Supplier MétodoHighOrder: " + valorHO);
+		
+		
 		// CCNSUMER
 		
 		
@@ -39,27 +43,45 @@ public class MainInterfacesFuncionales {
 		// LAMBDAS
 		IPersonaConsumer<String> consumerLambda = (cadena) -> System.out.println(cadena);
 		consumerLambda.accept("Prueba Consumer Lambda");
+	
+		//MétodosHighOrder
 		
-		Consumer<String> consumerLambda2 = (x) -> System.out.println(x);
-		consumerLambda2.accept("Consumer");
+		metodosHighOrder.consumirConsumer(valor -> System.out.println("Consumer Método: " + valor), 7);
 		
 		// PREDICATE
 		
-		// CLASES
+		// Clases
 		
-		// LAMBDAS
+		// Lambdas
+		
+		IPersonaPredicate<String> predicateLambda = (nombre) -> nombre.equals("Hola");
+		logJava.info("Prueba Predicate Lambda: " + predicateLambda.evaluar("Habla"));
 
+		//MétodosHighOrder
+		logJava.info("Prueba Método: " + metodosHighOrder.consumirPredicate(predicateLambda, "Hola"));
 		// FUNCTION
 		
-		// CLASES
+		// Clase
 		
-		// LAMBDAS
-
+		// Lambdas
+		//Recibe un String y devuelve un Integer
+		IPersonaFunction<Integer, String> function = (numero) -> Integer.parseInt(numero) + 1;
+		logJava.info("Prueba Function Lambda: " + function.aplicar("7"));
+		
+		//MétodosHighOrder
+		logJava.info("Prueba Método Lambda: " + metodosHighOrder.consumirFunction( valor -> valor.toString(), 7));
 		// UNARYOPERATOR
 		
 		// CLASES
 		
 		// LAMBDAS
+		
+		IPersonaUnaryOperator<String> unaryLambda =  cade -> {
+			String valorFinal = cade.concat("sufijo");
+			return valorFinal;
+		};
+		logJava.info("Prueba Function Lambda: " + unaryLambda.apply("Daniel"));
+	
 	}
 
 }
