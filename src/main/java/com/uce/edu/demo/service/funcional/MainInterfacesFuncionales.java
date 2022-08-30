@@ -1,67 +1,25 @@
 package com.uce.edu.demo.service.funcional;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 import org.apache.log4j.Logger;
 
 public class MainInterfacesFuncionales {
 
 	private static Logger logJava = Logger.getLogger(MainInterfacesFuncionales.class);
 	
+	public static  void imprimir(String cadena) {
+        logJava.info("impresion: "+cadena);
+    }
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("Interfaces Funcionales con Clases");
-		
-		ITrianguloSupplier<String> trianguloSupplier = new TrianguloSupplierImpl();
-		logJava.info("Supplier Class: " + trianguloSupplier.getNombre());
-		
-		ICuadradoConsumer<Integer> cuadradoConsumer = new CuadradoConsumerImpl();
-		cuadradoConsumer.accept(7);
-		
-		IRomboPredicate<Integer> romboPredicate = new RomboPredicateImpl();
-		logJava.info("Predicate Class: " + romboPredicate.evaluar(4));
-		
-		IRectanguloFunction<Integer, String> rectanguloFunction = new RectanguloFunctionImpl();
-		logJava.info("Function Class: " + rectanguloFunction.aplicar("5"));
-		
-		IRectanguloUnaryOperator<Integer> rectanguloUnaryOperator = new UnaryOperatorImpl();
-		logJava.info("Unary Operator Class: " + rectanguloUnaryOperator.aplicar(9));
-		
-		System.out.println("**************************************");
-		
-		System.out.println("Interfaces Funcionales con Lambdas");
-		
-		ITrianguloSupplier<String> trianguloSupplierLambda = () -> "Triángulo Rectángulo";
-		logJava.info("Supplier Lambda: " + trianguloSupplierLambda.getNombre());
-		
-		ICuadradoConsumer<Integer> cuadradoConsumerLambda = (perimetro) -> System.out.println("El perímetro es: " + perimetro);
-		cuadradoConsumerLambda.accept(10);
-		
-		IRomboPredicate<Integer> romboPredicateLambda = (menor) -> menor > 7;
-		logJava.info("Predicate Class: " + romboPredicateLambda.evaluar(4));
-		
-		IRectanguloFunction<Boolean, Integer> rectanguloFunctionLambda = (area) -> area < 4;
-		logJava.info("Function Class: " + rectanguloFunctionLambda.aplicar(8));
-		
-		IRectanguloUnaryOperator<String> rectanguloUnaryOperatorLambda = (altura) -> altura.concat(" m^2");
-		logJava.info("Unary Operator Class: " + rectanguloUnaryOperatorLambda.aplicar("6"));
-		
-		System.out.println("**************************************");
-		
-		System.out.println("Interfaces Funcionales con Métodos High Order");
-		
 		ConsumoMetodosHighOrder metodosHighOrder = new ConsumoMetodosHighOrder();
 		
-		logJava.info(metodosHighOrder.consumirSupplier2(() -> "Triangulo Isósceles"));
-		
-		metodosHighOrder.consumirConsumer2((lado) -> System.out.println(lado), 5);
-		
-		logJava.info(metodosHighOrder.consumirPredicate2((diametro) -> diametro.equals("6"), "6"));
-		
-		logJava.info(metodosHighOrder.consumirFunction2((area) -> area.toString().concat(" es el área"), 12));
-		
-		logJava.info(metodosHighOrder.consumirUnaryOperator((volumen) -> volumen.concat("Es el volumen en m^3"), "1264.1234"));
-		
-		/*// SUPPLIER
+		// SUPPLIER
 		
 		// Clases
 		
@@ -130,8 +88,34 @@ public class MainInterfacesFuncionales {
 			String valorFinal = cade.concat("sufijo");
 			return valorFinal;
 		};
-		logJava.info("Prueba Function Lambda: " + unaryLambda.apply("Daniel"));*/
+		logJava.info("Prueba Function Lambda: " + unaryLambda.apply("Daniel"));
+		
+		//JAVA
+		
+		//SUPPLIER
+		System.out.println("Supplier");
+		Stream<String> test = Stream.generate(() -> "Erick2").limit(2);
+		test.forEach((cadena) -> System.out.println("Supplier con Java" + cadena));
+		
+		//CONSUMER
+		System.out.println("Consumer");
+		List<Integer> listaNumeros = Arrays.asList(1,2,3,4,5);
+		listaNumeros.forEach((numero) -> System.out.println("Consumer con Java: " + numero));
+		
+		//PREDICATE
+		System.out.println("Predicate");
+		Stream<Integer> nuevaLista = listaNumeros.stream().filter(numero -> numero >= 3);
+		nuevaLista.forEach(numero -> System.out.println(numero));
 	
+		//FUNCTION
+		System.out.println("Function");
+		Stream<String> listaCambiada = listaNumeros.stream().map(numeroLista -> {
+			Integer valor = numeroLista+1;
+			String cadena = "Num: " + valor.toString();
+			return cadena;
+		});
+		
+		listaCambiada.forEach((numero) -> imprimir(numero));
 	}
 
 }
