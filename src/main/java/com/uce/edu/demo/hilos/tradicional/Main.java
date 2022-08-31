@@ -9,6 +9,8 @@ public class Main {
 
 		long tiempoInicial = System.currentTimeMillis();
 		
+		System.out.println("Nombre Hilo: " + Thread.currentThread().getName());
+		
 		Cajero cajero1 = new Cajero("Edison", Arrays.asList("Pepito", "Daniela", "Juan", "Pedro", "Erick"));
 		Cajero cajero2 = new Cajero("Luis", Arrays.asList("Pepito2", "Daniela2", "Juan2", "Pedro2"));
 		Cajero cajero3 = new Cajero("Paul", Arrays.asList("Pepito3", "Daniela3", "Juan3"));
