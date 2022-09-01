@@ -92,7 +92,7 @@ public class MainInterfacesFuncionales {
 		
 		//JAVA
 		
-		//SUPPLIER
+		/*//SUPPLIER
 		System.out.println("Supplier");
 		Stream<String> test = Stream.generate(() -> "Erick2").limit(2);
 		test.forEach((cadena) -> System.out.println("Supplier con Java" + cadena));
@@ -115,7 +115,28 @@ public class MainInterfacesFuncionales {
 			return cadena;
 		});
 		
-		listaCambiada.forEach((numero) -> imprimir(numero));
+		listaCambiada.forEach((numero) -> imprimir(numero));*/
+		
+		
+		System.out.println("\nSupplier con Java");
+		Stream<Integer> supplierJava = Stream.generate(() -> 45 + 2).limit(1);
+		supplierJava.forEach((edad)-> System.out.println("El año de la persona es: " + edad));
+		
+		System.out.println("\nConsumer con Java");
+		List<String> nombres = Arrays.asList("Erick", "David", "Paúl");
+		nombres.forEach((nombre) -> System.out.println("La longitud de " + nombre + " es: " + nombre.length()));
+		
+		System.out.println("\nPredicate con Java");
+		Stream<String> letra = nombres.stream().filter((nombre) -> nombre.charAt(1) == 'r');
+		letra.forEach((e) -> System.out.println("El nombre que contiene una r es: " + e));
+		
+		System.out.println("\nPredicate con Java");
+		Stream<String> listaNombre = nombres.stream().map( nombre -> {
+			String nombreCompleto = "Villavicencio " + nombre;
+			return nombreCompleto;
+		});
+		listaNombre.forEach((e) -> System.out.println("Los nombres con apellido Villavicencio son: " + e));
+		
 	}
 
 }
