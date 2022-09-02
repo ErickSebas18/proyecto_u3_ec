@@ -7,11 +7,18 @@ public class MainParalelo {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		long tiempoInicial = System.currentTimeMillis();
-
-		System.out.println("Nombre Hilo: " + Thread.currentThread().getName());
-
-		CajeroParalelo cajero1 = new CajeroParalelo("Edison",
+		Jugador jugador1 = new Jugador("Erick", "correr", 0);
+		Jugador jugador2 = new Jugador("Paúl", "saltar", 0);
+		Jugador jugador3 = new Jugador("Cristian", "agacharse", 0);
+		
+		JugadorParalelo empezar = new JugadorParalelo(jugador1);
+		empezar.start();
+		JugadorParalelo empezar2 = new JugadorParalelo(jugador2);
+		empezar2.start();
+		JugadorParalelo empezar3 = new JugadorParalelo(jugador3);
+		empezar3.start();
+		
+		/*CajeroParalelo cajero1 = new CajeroParalelo("Edison",
 				Arrays.asList("Pepito", "Daniela", "Juan", "Pedro", "Erick"));
 		CajeroParalelo cajero2 = new CajeroParalelo("Luis", Arrays.asList("Pepito2", "Daniela2", "Juan2", "Pedro2"));
 		CajeroParalelo cajero3 = new CajeroParalelo("Paul", Arrays.asList("Pepito3", "Daniela3", "Juan3"));
@@ -21,13 +28,9 @@ public class MainParalelo {
 		PCCajeroParalelo gestorAtencion2 = new PCCajeroParalelo(cajero2);
 		gestorAtencion2.start();
 		PCCajeroParalelo gestorAtencion3 = new PCCajeroParalelo(cajero3);
-		gestorAtencion3.start();
+		gestorAtencion3.start();*/
 
-		long tiempoFinal = System.currentTimeMillis();
-
-		long tiempoTranscurrido = (tiempoFinal - tiempoInicial) / 1000;
-
-		System.out.println("Tiempo Transcurrido: " + tiempoTranscurrido + "seg");
+	
 	}
 
 }
